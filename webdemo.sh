@@ -6,7 +6,6 @@ if ask 'Running first time?'; then
   mkdir -p /var/www/drupal
 
   pause 'Vytvoreni mysql uzivatele demo'
-  mysqlpass=`cat tmp/mysql.pass`
   cd ~/virtual/webdemo
   mysql -u root "-p$mysqlpass"  < demo_user.sql
 
@@ -48,7 +47,7 @@ if ask 'Instalace ukazkoveho webu D7' y; then
     git init && git remote add origin https://github.com/vmwebCZ/demo-d7.git
   fi
   git pull origin master
-mysql -u demo -pdemo -Bse "drop database if exists demo_d7;"
+  mysql -u demo -pdemo -Bse "drop database if exists demo_d7;"
   mysql -u demo -pdemo -Bse "create database demo_d7;"
   cp docroot/sites/default/default.settings.php docroot/sites/default/settings.php
   mkdir docroot/sites/default/files

@@ -2,6 +2,8 @@
 
 name=$(whoami)
 
+mysqlpass=`cat tmp/mysql.pass`
+
 function pause(){
    read -p "$* - Press [Enter] to continue..."
 }
