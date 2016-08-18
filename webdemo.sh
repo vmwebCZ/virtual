@@ -6,7 +6,7 @@ if ask 'Running first time?'; then
   mkdir -p /var/www/drupal
 
   pause 'Vytvoreni mysql uzivatele demo'
-  cd ~/virtual/webdemo
+  cd $dir/webdemo
   mysql -u root "-p$mysqlpass"  < demo_user.sql
 
   pause 'Uprava hosts souboru pro demo weby'
@@ -16,7 +16,7 @@ if ask 'Running first time?'; then
 fi
 
 if ask 'Instalace ukazkoveho webu D8' y; then
-  cd ~/virtual
+  cd $dir
   cp webdemo/020-demo-d8.conf /etc/apache2/sites-available
   mkdir -p /var/www/drupal/demo-d8
   cd /var/www/drupal/demo-d8
@@ -37,7 +37,7 @@ fi
 
 
 if ask 'Instalace ukazkoveho webu D7' y; then
-  cd ~/virtual
+  cd $dir
   cp webdemo/020-demo-d7.conf /etc/apache2/sites-available
   mkdir -p /var/www/drupal/demo-d7
   cd /var/www/drupal/demo-d7
@@ -56,7 +56,7 @@ if ask 'Instalace ukazkoveho webu D7' y; then
 fi
 
 if ask 'Instalace ukazkoveho webu Lightning project' y; then
-  cd ~/virtual
+  cd $dir
   cp webdemo/020-demo-lightning.conf /etc/apache2/sites-available
   mkdir -p /var/www/drupal/demo-lightning
   cd /var/www/drupal/demo-lightning

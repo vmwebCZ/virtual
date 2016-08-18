@@ -1,7 +1,7 @@
 #!/bin/bash
 
 name=$(whoami)
-
+dir=$(pwd)
 mysqlpass=`cat tmp/mysql.pass`
 
 function pause(){

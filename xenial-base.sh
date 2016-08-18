@@ -129,7 +129,7 @@ sudo ln -s "/home/$name/.config/composer/vendor/behat/behat/bin/behat" /usr/loca
 #https://github.com/twigphp/Twig/issues/1695 -> https://www.drupal.org/node/2568247
 
 pause 'Kopirovani /etc a var'
-cd ~/virtual
+cd $dir
 sudo cp -r xenial-base/etc/* /etc
 sudo cp -r xenial-base/var/* /var
 sudo chown -R solr:solr /var/solr
@@ -164,7 +164,7 @@ sudo chown -R www-data:www-data /var/www
 echo 'Vygeneruj si SSH klic prikazem: ssh-keygen -t rsa -b 4096 -C "your_email@example.com"'
 
 if ask 'Change install repository to SSH?' y; then
-  cd ~/virtual
+  cd $dir
   git remote set-url origin git@github.com:vmwebCZ/virtual.git
 fi
 
