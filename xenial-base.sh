@@ -1,5 +1,6 @@
 #!/bin/bash
 source common.sh
+mkdir -p tmp
 echo "1.0" > tmp/VERSION
 
 if ask 'Proceed git settings?' y; then
