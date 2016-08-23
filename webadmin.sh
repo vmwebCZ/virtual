@@ -29,6 +29,7 @@ mysql -u root "-p$mysqlpass" -Bse "create database phpmyadmin;"
 mysql -u root "-p$mysqlpass" phpmyadmin < create_tables.sql
 cd /var/www/admin/memcache
 mkdir Temp
+cd $dir
 cp webadmin/010-admin.conf /etc/apache2/sites-available
 sudo a2ensite 010-admin.conf
 
