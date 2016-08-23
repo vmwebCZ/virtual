@@ -100,7 +100,7 @@ sudo mv composer.phar /usr/local/bin/composer
 #sudo ln -s /usr/local/bin/composer /usr/bin/composer
 
 pause 'Nastaveni GitHub OAuth'
-read -p "Insert GitHub oAuth token, see: https://github.com/settings/tokens" githubtoken
+read -p "Insert GitHub oAuth token, see: https://github.com/settings/tokens - " githubtoken
 composer config -g github-oauth.github.com $githubtoken
 
 pause 'Instalace composer packages'
