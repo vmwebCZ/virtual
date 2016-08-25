@@ -158,6 +158,7 @@ sudo usermod -a -G  $name  $name
 sudo usermod -a -G sudo  $name  # important!
 sudo usermod -a -G solr  $name
 sudo chmod -R g+w /var/www
+sudo apt-get -y install acl
 sudo setfacl -d -m g::rwx /var/www
 sudo setfacl -d -m o::rx /var/www
 sudo chown -R www-data:www-data /var/www
