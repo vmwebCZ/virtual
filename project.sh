@@ -19,13 +19,18 @@ projectdir="/var/www/drupal/$projectname"
 echo "Project name: $projectname"
 echo "Project dir: $projectdir"
 
+
+defaultrepository="git@github.com:vmwebCZ/template-d8.git"
+read -p "Repository url (default=$defaultrepository)" repository
 mkdir -p $projectdir
 cd $projectdir
 git init
-git remote add origin git@github.com:vmwebCZ/template-d8.git
+git remote add origin  $repository
 git pull origin master
-rm -rf .git
-git init
+if [[ $repository = $defaultrepository ]]; then
+  rm -rf .git
+  git init
+fi
 
 mysqldb=
 while [[ $mysqldb = "" ]]; do
@@ -44,6 +49,13 @@ conffile="/etc/apache2/sites-available/030-$projectname.conf"
 sudo cp project/site.conf $conffile
 sudo sed -i "s|PROJECT|$projectname|g" $conffile
 sudo sed -i "s|DOMAIN|$devdomain|g" $conffile
+if [[ $repository = $defaultrepository ]]; then
+  docroot="/docroot"
+else
+  read -p "Drupal subdirectory in project root (default = none, for default repository use /docroot)" docroot
+  sudo sed -i "s|/docroot|$docroot|g" $conffile
+fi
+
 
 sudo a2ensite "030-$projectname"
 sudo service apache2 restart
