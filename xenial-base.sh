@@ -44,6 +44,7 @@ done
 echo "$mysqlpass" > tmp/mysql.pass
 echo "mysql-server mysql-server/root_password password $mysqlpass" | sudo debconf-set-selections
 echo "mysql-server mysql-server/root_password_again password $mysqlpass" | sudo debconf-set-selections
+sudo cp xenial-base/etc/mysql /etc
 sudo apt-get install -y mysql-server mysql-client
 
 pause 'Instalace memcached a imagemagick'
@@ -60,7 +61,7 @@ sudo apt-get install -y libmagickwand-dev libsasl2-dev xfonts-75dpi wkhtmltopdf
 
 pause 'Instalace Apache2 + PHP 7.0'
 sudo apt-get install -y php php-dev php-common apache2 apache2-utils libapache2-mod-php php-pear
-sudo apt-get install -y php-bz2 php-cli php-curl php-gd php-imagick php-imap php-json php-mbstring php-mcrypt
+sudo apt-get install -y php-bcmath php-bz2 php-cli php-curl php-gd php-imagick php-imap php-json php-mbstring php-mcrypt php-zip
 sudo apt-get install -y php-mysql php-memcached php-xdebug
 sudo rm -f /etc/php/7.0/cli/conf.d/20-xdebug.ini
 sudo a2enmod rewrite
