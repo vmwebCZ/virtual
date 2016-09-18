@@ -22,7 +22,7 @@ APT::Install-Suggests \"0\";
 
 pause 'Instalace mc a pridani repositories'
 sudo apt-get update > /dev/null
-sudo apt-get install -y software-properties-common mc
+sudo apt-get install -y software-properties-common mc curl
 sudo add-apt-repository -y ppa:pdoes/ppa
 #sudo add-apt-repository -y ppa:ondrej/php
 sudo add-apt-repository -y ppa:webupd8team/java
