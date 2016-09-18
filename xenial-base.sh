@@ -44,7 +44,7 @@ done
 echo "$mysqlpass" > tmp/mysql.pass
 echo "mysql-server mysql-server/root_password password $mysqlpass" | sudo debconf-set-selections
 echo "mysql-server mysql-server/root_password_again password $mysqlpass" | sudo debconf-set-selections
-sudo cp xenial-base/etc/mysql /etc
+sudo cp -r xenial-base/etc/mysql /etc
 sudo apt-get install -y mysql-server mysql-client
 
 pause 'Instalace memcached a imagemagick'
