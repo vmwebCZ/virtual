@@ -5,7 +5,7 @@ read -p "Insert full name (eg John Doe)" fullname
 read -p "Insert username (eg johndoe)" username
 read -p "Insert e-mail (eg john@doe.com)" email
 
-sudo useradd -m -d "/home/$username" -c "$fullname" $username
+sudo useradd -m -d "/home/$username" -c "$fullname" -s /bin/bash $username
 sudo usermod -g www-data $username
 sudo usermod -a -G $username $username
 sudo usermod -a -G sudo $username  # important!
