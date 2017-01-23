@@ -160,16 +160,20 @@ if ask "Nastaveni GitHub OAuth"; then
   composer config -g github-oauth.github.com $githubtoken
 fi
 
-if ask "Instalace Drupal Console pres Composer?" y; then
-  composer global require drupal/console
-  sudo ln -s "/home/$name/.composer/vendor/drupal/console/bin/drupal" /usr/local/bin/drupal
+if ask "Instalace Console LAUNCHER (phar)?" y; then
+  sudo curl -fSL "https://drupalconsole.com/installer" -o /usr/local/bin/drupal
+  sudo chmod +x /usr/local/bin/drupal
+  #composer global require drupal/console
+  #sudo ln -s "/home/$name/.composer/vendor/drupal/console/bin/drupal" /usr/local/bin/drupal
 fi
 
-if ask "Instalace Drush pres Composer?" y; then
+if ask "Instalace Drush LAUNCHER (phar)?" y; then
   composer global require pear/Console_Color2
-  composer global require drush/drush
-  sudo ln -s "/home/$name/.composer/vendor/drush/drush/drush" /usr/local/bin/drush
-  sudo ln -s "/home/$name/.composer/vendor/drush/drush/drush.complete.sh" /etc/bash_completion.d/
+  sudo curl -fSL "https://s3.amazonaws.com/files.drush.org/drush.phar" -o /usr/local/bin/drush
+  sudo chmod +x /usr/local/bin/drush
+  #composer global require drush/drush
+  #sudo ln -s "/home/$name/.composer/vendor/drush/drush/drush" /usr/local/bin/drush
+  #sudo ln -s "/home/$name/.composer/vendor/drush/drush/drush.complete.sh" /etc/bash_completion.d/
 fi
 
 if ask "Instalace Phing pres Composer?" y; then
